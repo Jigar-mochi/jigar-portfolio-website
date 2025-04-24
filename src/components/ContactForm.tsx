@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { toast } from 'react-hot-toast';
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { toast } from "react-hot-toast";
 
 interface FormData {
   name: string;
@@ -13,12 +13,12 @@ interface FormData {
 
 export default function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -30,23 +30,23 @@ export default function ContactForm() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!name.trim()) {
-      toast.error('Name is required');
+      toast.error("Name is required");
       return false;
     }
     if (!email.trim()) {
-      toast.error('Email is required');
+      toast.error("Email is required");
       return false;
     }
     if (!emailRegex.test(email)) {
-      toast.error('Please enter a valid email address');
+      toast.error("Please enter a valid email address");
       return false;
     }
     if (!subject.trim()) {
-      toast.error('Subject is required');
+      toast.error("Subject is required");
       return false;
     }
     if (!message.trim()) {
-      toast.error('Message is required');
+      toast.error("Message is required");
       return false;
     }
     return true;
@@ -54,15 +54,15 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
 
     setIsSubmitting(true);
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
+      const response = await fetch("/api/contact", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
@@ -70,18 +70,18 @@ export default function ContactForm() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Something went wrong');
+        throw new Error(data.error || "Something went wrong");
       }
 
-      toast.success('Message sent successfully!');
+      toast.success("Message sent successfully!");
       setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
       });
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : 'Failed to send message');
+      toast.error(error instanceof Error ? error.message : "Failed to send message");
     } finally {
       setIsSubmitting(false);
     }
@@ -170,9 +170,7 @@ export default function ContactForm() {
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white">
             Get in <span className="text-primary">Touch</span>
           </h2>
-          <p className="mt-4 text-gray-600 dark:text-gray-300">
-            Feel free to reach out to me
-          </p>
+          <p className="mt-4 text-gray-600 dark:text-gray-300">Feel free to reach out to me</p>
         </motion.div>
 
         <motion.div
@@ -194,9 +192,7 @@ export default function ContactForm() {
                   type="text"
                   id="name"
                   value={formData.name}
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
+                  onChange={e => setFormData({ ...formData, name: e.target.value })}
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white"
                   required
                 />
@@ -212,9 +208,7 @@ export default function ContactForm() {
                   type="email"
                   id="email"
                   value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
+                  onChange={e => setFormData({ ...formData, email: e.target.value })}
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white"
                   required
                 />
@@ -231,9 +225,7 @@ export default function ContactForm() {
                 type="text"
                 id="subject"
                 value={formData.subject}
-                onChange={(e) =>
-                  setFormData({ ...formData, subject: e.target.value })
-                }
+                onChange={e => setFormData({ ...formData, subject: e.target.value })}
                 className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white"
                 required
               />
@@ -248,9 +240,7 @@ export default function ContactForm() {
               <textarea
                 id="message"
                 value={formData.message}
-                onChange={(e) =>
-                  setFormData({ ...formData, message: e.target.value })
-                }
+                onChange={e => setFormData({ ...formData, message: e.target.value })}
                 rows={4}
                 className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white"
                 required
@@ -269,4 +259,4 @@ export default function ContactForm() {
       </div>
     </section>
   );
-} 
+}

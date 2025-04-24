@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { useTheme } from "next-themes";
-import Link from "next/link";
 import { SunIcon, MoonIcon } from "@heroicons/react/24/outline";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
 
 const Navbar = () => {
   const [mounted, setMounted] = useState(false);
@@ -82,4 +82,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar; 
+export default Navbar;

@@ -1,6 +1,7 @@
-import { NextResponse } from 'next/server';
-import connectDB from '@/lib/mongodb';
-import Contact from '@/models/Contact';
+import { NextResponse } from "next/server";
+
+import connectDB from "@/lib/mongodb";
+import Contact from "@/models/Contact";
 
 export async function POST(req: Request) {
   try {
@@ -8,10 +9,7 @@ export async function POST(req: Request) {
 
     // Validate required fields
     if (!name || !email || !subject || !message) {
-      return NextResponse.json(
-        { error: 'All fields are required' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "All fields are required" }, { status: 400 });
     }
 
     // Connect to MongoDB
@@ -26,14 +24,11 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json(
-      { message: 'Contact form submitted successfully', contact },
+      { message: "Contact form submitted successfully", contact },
       { status: 201 }
     );
   } catch (error) {
-    console.error('Error submitting contact form:', error);
-    return NextResponse.json(
-      { error: 'Error submitting contact form' },
-      { status: 500 }
-    );
+    console.error("Error submitting contact form:", error);
+    return NextResponse.json({ error: "Error submitting contact form" }, { status: 500 });
   }
-} 
+}

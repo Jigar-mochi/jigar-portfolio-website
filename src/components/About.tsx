@@ -14,17 +14,17 @@ const About = () => {
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;
-    
+
     const rect = containerRef.current.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;
-    
+
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
-    
+
     const xPct = mouseX / width - 0.5;
     const yPct = mouseY / height - 0.5;
-    
+
     x.set(xPct * 200);
     y.set(yPct * 200);
   };
@@ -59,7 +59,9 @@ const About = () => {
               transition={{ duration: 0.3 }}
               className="absolute inset-0 rounded-lg overflow-hidden shadow-2xl"
             >
-              <img
+              <Image
+                width={256}
+                height={256}
                 src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Dhttps://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
                 alt="Profile"
                 className="w-full h-full object-cover"
@@ -84,9 +86,9 @@ const About = () => {
             About <span className="text-primary">Me</span>
           </h2>
           <p className="text-gray-600 dark:text-gray-300">
-            I am a passionate Full Stack Developer with expertise in building modern web applications.
-            With a strong foundation in both frontend and backend technologies, I create seamless
-            digital experiences that users love.
+            I am a passionate Full Stack Developer with expertise in building modern web
+            applications. With a strong foundation in both frontend and backend technologies, I
+            create seamless digital experiences that users love.
           </p>
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
@@ -112,4 +114,4 @@ const About = () => {
   );
 };
 
-export default About; 
+export default About;

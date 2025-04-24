@@ -1,11 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+
 import About from "@/components/About";
+import ContactForm from "@/components/ContactForm";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 // import Contact from "@/components/Contact";
-import ContactForm from "@/components/ContactForm";
 
 export default function Home() {
   return (
@@ -19,8 +20,7 @@ export default function Home() {
           className="space-y-4"
         >
           <h1 className="text-4xl md:text-6xl font-bold">
-            Hi, I&apos;m{" "}
-            <span className="animate-text-gradient">Jigar Mochi</span>
+            Hi, I&apos;m <span className="animate-text-gradient">Jigar Mochi</span>
           </h1>
           <h2 className="text-xl md:text-2xl text-gray-600 dark:text-gray-400">
             Full Stack Developer

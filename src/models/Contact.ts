@@ -1,25 +1,25 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const contactSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, 'Name is required'],
+    required: [true, "Name is required"],
     trim: true,
   },
   email: {
     type: String,
-    required: [true, 'Email is required'],
+    required: [true, "Email is required"],
     trim: true,
     lowercase: true,
   },
   subject: {
     type: String,
-    required: [true, 'Subject is required'],
+    required: [true, "Subject is required"],
     trim: true,
   },
   message: {
     type: String,
-    required: [true, 'Message is required'],
+    required: [true, "Message is required"],
     trim: true,
   },
   createdAt: {
@@ -28,4 +28,4 @@ const contactSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.models.Contact || mongoose.model('Contact', contactSchema); 
+export default mongoose.models.Contact || mongoose.model("Contact", contactSchema);
