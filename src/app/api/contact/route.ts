@@ -25,7 +25,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json(
       { message: "Contact form submitted successfully", contact },
-      { status: 201 }
+      { status: 201 },
     );
   } catch (error) {
     console.error("Error submitting contact form:", error);
